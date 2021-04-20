@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 示例</title>
+</head>
+
+<body>
+    <div id="app">
+        {{date}}
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                date: new Date()
+            },
+            mounted() {
+                var _this =this;
+                this.timer = setInterval(function () {
+                    _this.date = new Date();
+                }, 1000);
+            },
+            beforeDestroy() {
+                if(this.timer){
+                    clearInterval(this.timer);
+                }
+            },
+            methods: {
+                handleClick() {
+                    this.show = false;
+                }
+            },
+
+        })
+    </script>
+</body>
+
+</html>
